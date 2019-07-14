@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./TemplateVeterinaria.xhtml">
+            <ui:define name="content">
+                <p:growl id="msj" autoUpdate="true"/>
+                <div align="center">
+
+                    <h:form id="formpersonal">
+                        <p:panel style="width: 80%">
+                            <f:facet name="header">
+                                <p:column>
+                                    <p:outputLabel value="Personal"/>
+                                </p:column>
+                            </f:facet>
+                            <p:panelGrid style="width: 80%">
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="ID"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{personalBean.personal.idPersonal}" required="true" style="width: 90%"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Nombres"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{personalBean.personal.nombres}" required="true" style="width: 90%"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Apellidos"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{personalBean.personal.apellidos}" required="true" style="width: 90%"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="DNI"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{personalBean.personal.dni}" required="true" style="width: 90%"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Telfono / Celular"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{personalBean.personal.telefono}" required="true" style="width: 90%"/>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Email"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{personalBean.personal.email}" required="true" style="width: 90%"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Cargo"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText  value="#{personalBean.personal.cargo}" style="width: 90%"/>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            <p:commandButton value="Guardar" action="#{personalBean.insertPersonal()}" update=":tablePersonal:listPersonal, :formpersonal"/>
+                            <p:commandButton value="Nuevo" action="#{personalBean.clean()}" update=":formpersonal"/>
+                            <p:commandButton value="Actualizar" action="#{personalBean.updatePersonal()}" update=":tablePersonal:listPersonal"/>
+                        </p:panel>
+                    </h:form>
+                    <h:form id="tablePersonal" style="width: 80%">
+                        <p:dataTable id="listPersonal" var="personal" value="#{personalBean.listPersonal()}" rowKey="#{personal.idPersonal}" selection="#{personalBean.personal}" selectionMode="single" >
+                            <p:ajax event="rowSelect" update=":formpersonal"/>
+                            <p:column headerText="Codigo">
+                                <p:outputLabel value="#{personal.getIdPersonal()}"/>
+                            </p:column>
+                            <p:column headerText="Nombres y Apellidos">
+                                <p:outputLabel value="#{personal.getNombres()}"/>
+                            </p:column>
+                            <p:column headerText="Dni">
+                                <p:outputLabel value="#{personal.getDni()}"/>
+                            </p:column>
+                            <p:column headerText="Telefono">
+                                <p:outputLabel value="#{personal.getTelefono()}"/>
+                            </p:column>
+                            <p:column headerText="Email">
+                                <p:outputLabel value="#{personal.getEmail()}"/>
+                            </p:column>
+                            <p:column headerText="Cargo">
+                                <p:outputLabel value="#{personal.getCargo()}"/>
+                            </p:column>
+                            <p:column headerText="Acciones">
+                                <p:commandButton value="Eliminar" action="#{personalBean.deletePersonal(personal)}" update=":tablePersonal:listPersonal"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </div>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

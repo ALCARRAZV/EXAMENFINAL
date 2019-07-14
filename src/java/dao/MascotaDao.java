@@ -34,6 +34,7 @@ public class MascotaDao implements IMascota {
         query = session.createQuery(hql);
         list = (ArrayList<Mascota>) query.list();
 
+        session.close();
         return list;
 
     }

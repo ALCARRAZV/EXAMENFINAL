@@ -6,9 +6,12 @@
 package pruebas;
 
 import dao.MascotaDao;
+import dao.PersonalDao;
 import entidades.Mascota;
+import entidades.Personal;
 import java.util.ArrayList;
 import mangerBean.MascotaBean;
+import mangerBean.PersonalBean;
 import org.hibernate.Session;
 import utilitarios.HibernateUtil;
 
@@ -21,18 +24,18 @@ public class probar {
     public static void main(String[] args) {
         
         Session sesion = HibernateUtil.getSessionFactory().openSession();
-        MascotaDao objMascotaDao = new MascotaDao();
-        MascotaBean masbean = new MascotaBean();
+        PersonalDao objMascotaDao = new PersonalDao();
+        PersonalBean masbean = new PersonalBean();
         
         // Prueba Insertar
 //        Mascota objMascota = new Mascota(5, "Sandor", "Joaquin Altamirano", "Mini Lop");
 //        objMascotaDao.insertMascota(objMascota);
         
          //Prueba Listar
-        ArrayList<Mascota> list = new ArrayList<>();
-        list = masbean.listMascota();
+        ArrayList<Personal> list = new ArrayList<>();
+        list = masbean.listPersonal();
         for (int i = 0; i < list.size(); i++) {
-            System.out.println("Mascota: " + list.get(i).getNombreMascota() + " Raza: " + list.get(i).getRaza());
+            System.out.println("Nombre: " + list.get(i).getNombres()+ " Apellidos: " + list.get(i).getApellidos());
         }
 
         //Actualizar registro

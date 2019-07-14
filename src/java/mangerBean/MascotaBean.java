@@ -29,6 +29,7 @@ public class MascotaBean {
     private Mascota mascota;
     public MascotaDao mascotadao;
     boolean respuesta;
+    private boolean banderaSelect = false;    
 
     public MascotaBean() {
         this.mascota = new Mascota();
@@ -92,6 +93,18 @@ public class MascotaBean {
         }
         return "/Mascota";
         
+    }
+    
+    public void selectBandera(){
+        banderaSelect = true;
+    }
+
+    public boolean isBanderaSelect() {
+        return banderaSelect;
+    }
+
+    public void setBanderaSelect(boolean banderaSelect) {
+        this.banderaSelect = banderaSelect;
     }
 
 }

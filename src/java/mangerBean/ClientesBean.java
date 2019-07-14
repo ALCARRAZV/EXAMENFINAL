@@ -6,7 +6,7 @@
 package mangerBean;
 
 import dao.ClientesDao;
-import entidades.Clientes;
+import entidades.Cliente;
 import java.util.ArrayList;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -20,73 +20,73 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @ViewScoped
 public class ClientesBean {
-    
-     private Clientes clientes;
+
+    private Cliente clientes;
     private ClientesDao clientesDao;
     private boolean respuesta;
-    
+
     public ClientesBean() {
-        this.clientes = new Clientes();
+        this.clientes = new Cliente();
     }
 
-    public Clientes getClientes() {
+    public Cliente getClientes() {
         return clientes;
     }
 
-    public void setClientes(Clientes clientes) {
+    public void setClientes(Cliente clientes) {
         this.clientes = clientes;
     }
-    
-    public ArrayList<Clientes> listClientes() {
 
-        ArrayList<Clientes> list = new ArrayList<>();
+    public ArrayList<Cliente> listClientes() {
+
+        ArrayList<Cliente> list = new ArrayList<>();
         clientesDao = new ClientesDao();
         list = clientesDao.listClientes();
         return list;
 
     }
-    
-    public String insertClientes(){
-        
+
+    public String insertClientes() {
+
         clientesDao = new ClientesDao();
         respuesta = clientesDao.insertClientes(clientes);
-        if(respuesta){
+        if (respuesta) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro insertado con exito", "exito"));
-        }else{
+        } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error", "No se pudo registrar"));
         }
         return "/Clientes";
-        
+
     }
-    
-    public String clean(){
+
+    public String clean() {
         return "/Clientes";
     }
-    
-    public String updateClientes(){
-        
+
+    public String updateClientes() {
+
         clientesDao = new ClientesDao();
         respuesta = clientesDao.updateClientes(clientes);
-        if(respuesta){
+        if (respuesta) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro actualizado con exito", "exito"));
-        }else{
+        } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error", "No se pudo registrar"));
         }
         return "/Clientes";
-        
+
     }
-    
-    public String deleteClientes(Clientes clientes){
-        
+
+    public String deleteClientes(Cliente clientes) {
+
         clientesDao = new ClientesDao();
         respuesta = clientesDao.deleteClientes(clientes);
-        if(respuesta){
+        if (respuesta) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro eliminado con exito", "exito"));
-        }else{
+        } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error", "No se pudo registrar"));
         }
         return "/Clientes";
-        
+
     }
-    
+
 }

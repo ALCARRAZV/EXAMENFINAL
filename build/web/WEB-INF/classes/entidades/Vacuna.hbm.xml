@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/07/2019 01:41:51 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Vacuna" table="vacuna" catalog="mascota" optimistic-lock="version">
+        <id name="idVacuna" type="java.lang.Integer">
+            <column name="id_vacuna" />
+            <generator class="identity" />
+        </id>
+        <property name="nombreComercial" type="string">
+            <column name="nombre_comercial" length="50" not-null="true" />
+        </property>
+        <property name="nombreGenerico" type="string">
+            <column name="nombre_generico" length="65535" not-null="true" />
+        </property>
+        <property name="nroRegistro" type="string">
+            <column name="nro_registro" length="20" not-null="true" />
+        </property>
+        <property name="tipoVacuna" type="char">
+            <column name="tipo_vacuna" length="1" not-null="true" />
+        </property>
+        <property name="patogeno" type="string">
+            <column name="Patogeno" length="45" not-null="true" />
+        </property>
+        <property name="precio" type="string">
+            <column name="precio" length="45" not-null="true" />
+        </property>
+        <property name="edad" type="int">
+            <column name="edad" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

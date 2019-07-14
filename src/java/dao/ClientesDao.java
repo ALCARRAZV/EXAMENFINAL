@@ -5,7 +5,7 @@
  */
 package dao;
 
-import entidades.Clientes;
+import entidades.Cliente;
 import java.util.ArrayList;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -25,25 +25,26 @@ public class ClientesDao implements IClientes {
     private Transaction transaccion;
 
     @Override
-    public ArrayList<Clientes> listClientes() {
+    public ArrayList<Cliente> listClientes() {
 
         session = HibernateUtil.getSessionFactory().openSession();
-        ArrayList<Clientes> list = new ArrayList<>();
-        hql = " from Clientes";
+        ArrayList<Cliente> list = new ArrayList<>();
+        hql = " from Cliente";
 
         try {
             query = session.createQuery(hql);
-            list = (ArrayList<Clientes>) query.list();
+            list = (ArrayList<Cliente>) query.list();
         } catch (Exception e) {
             System.out.println("Error en ClientesDao.listClientes...!");
         }
-
+        
+        session.close();
         return list;
 
     }
 
     @Override
-    public boolean insertClientes(Clientes objClientes) {
+    public boolean insertClientes(Cliente objClientes) {
 
         boolean respuesta = true;
         session = HibernateUtil.getSessionFactory().openSession();
@@ -62,7 +63,7 @@ public class ClientesDao implements IClientes {
     }
 
     @Override
-    public boolean updateClientes(Clientes objClientes) {
+    public boolean updateClientes(Cliente objClientes) {
 
         boolean respuesta = true;
         session = HibernateUtil.getSessionFactory().openSession();
@@ -81,7 +82,7 @@ public class ClientesDao implements IClientes {
     }
 
     @Override
-    public boolean deleteClientes(Clientes objClientes) {
+    public boolean deleteClientes(Cliente objClientes) {
 
         boolean respuesta = true;
         session = HibernateUtil.getSessionFactory().openSession();
