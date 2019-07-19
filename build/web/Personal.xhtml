@@ -5,33 +5,26 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
     <h:body>
         <ui:composition template="./TemplateVeterinaria.xhtml">
             <ui:define name="content">
                 <p:growl id="msj" autoUpdate="true"/>
                 <div align="center">
-
-                    <h:form id="formpersonal">
-                        <p:panel style="width: 80%">
+                    <h:form id="formpersonal" style="padding-top: 5px;">
+                        <p:panel style="width: 95%; padding-top: 10px; padding-bottom: 20px;" >
                             <f:facet name="header">
                                 <p:column>
-                                    <p:outputLabel value="Personal"/>
+                                    <p:outputLabel value="MANTENIENTO DE PERSONAL"/>
                                 </p:column>
                             </f:facet>
-                            <p:panelGrid style="width: 80%">
+                            <p:panelGrid style="width: 100%">
                                 <p:row>
                                     <p:column>
                                         <p:outputLabel value="ID"/>
                                     </p:column>
                                     <p:column>
                                         <p:inputText value="#{personalBean.personal.idPersonal}" required="true" style="width: 90%"/>
-                                    </p:column>
-                                </p:row>
-                                <p:row>
-                                    <p:column>
+                                    </p:column><p:column>
                                         <p:outputLabel value="Nombres"/>
                                     </p:column>
                                     <p:column>
@@ -45,8 +38,6 @@
                                     <p:column>
                                         <p:inputText value="#{personalBean.personal.apellidos}" required="true" style="width: 90%"/>
                                     </p:column>
-                                </p:row>
-                                <p:row>
                                     <p:column>
                                         <p:outputLabel value="DNI"/>
                                     </p:column>
@@ -61,8 +52,6 @@
                                     <p:column>
                                         <p:inputText value="#{personalBean.personal.telefono}" required="true" style="width: 90%"/>
                                     </p:column>
-                                </p:row>
-                                 <p:row>
                                     <p:column>
                                         <p:outputLabel value="Email"/>
                                     </p:column>
@@ -79,19 +68,19 @@
                                     </p:column>
                                 </p:row>
                             </p:panelGrid>
-                            <p:commandButton value="Guardar" action="#{personalBean.insertPersonal()}" update=":tablePersonal:listPersonal, :formpersonal"/>
-                            <p:commandButton value="Nuevo" action="#{personalBean.clean()}" update=":formpersonal"/>
-                            <p:commandButton value="Actualizar" action="#{personalBean.updatePersonal()}" update=":tablePersonal:listPersonal"/>
+                            <p:commandButton value="Guardar" action="#{personalBean.insertPersonal()}" update=":tablePersonal:listPersonal, :formpersonal" rendered="#{!personalBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                            <p:commandButton value="Nuevo" action="#{personalBean.clean()}" update=":formpersonal" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                            <p:commandButton value="Actualizar" action="#{personalBean.updatePersonal()}" update=":tablePersonal:listPersonal" rendered="#{personalBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
                         </p:panel>
                     </h:form>
-                    <h:form id="tablePersonal" style="width: 80%">
+                    <h:form id="tablePersonal" style="width: 96%">
                         <p:dataTable id="listPersonal" var="personal" value="#{personalBean.listPersonal()}" rowKey="#{personal.idPersonal}" selection="#{personalBean.personal}" selectionMode="single" >
-                            <p:ajax event="rowSelect" update=":formpersonal"/>
+                            <p:ajax event="rowSelect" update=":formpersonal"  listener="#{personalBean.selectBandera()}"/>
                             <p:column headerText="Codigo">
                                 <p:outputLabel value="#{personal.getIdPersonal()}"/>
                             </p:column>
                             <p:column headerText="Nombres y Apellidos">
-                                <p:outputLabel value="#{personal.getNombres()}"/>
+                                <p:outputLabel value="#{personal.getNombres()} #{personal.getApellidos()}"/>
                             </p:column>
                             <p:column headerText="Dni">
                                 <p:outputLabel value="#{personal.getDni()}"/>
@@ -106,12 +95,20 @@
                                 <p:outputLabel value="#{personal.getCargo()}"/>
                             </p:column>
                             <p:column headerText="Acciones">
-                                <p:commandButton value="Eliminar" action="#{personalBean.deletePersonal(personal)}" update=":tablePersonal:listPersonal"/>
+                                <p:commandButton value="Eliminar" oncomplete="PF('dlgEliminar').show();">
+                                    <f:setPropertyActionListener target="#{personalBean.personal}" value="#{personal}"/>
+                                </p:commandButton>
                             </p:column>
                         </p:dataTable>
                     </h:form>
                 </div>
-
+                <p:dialog id="dlgEliminar" header="Eliminar registro" widgetVar="dlgEliminar" showEffect="explode" hideEffect="explode">
+                    <h:form id="fromEliminar">
+                        <h:outputText value="Desea eliminar este registro"/>
+                        <p:commandButton value="Si" actionListener="#{personalBean.deletePersonal()}" update=":tablePersonal:listPersonal" oncomplete="PF('dlgEliminar').hide()"/>
+                        <p:commandButton value="No" oncomplete="PF('dlgEliminar').hide()"/>
+                    </h:form>
+                </p:dialog>
             </ui:define>
         </ui:composition>
     </h:body>

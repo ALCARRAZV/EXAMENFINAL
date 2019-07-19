@@ -13,28 +13,26 @@
                 <p:growl id="msj" autoUpdate="true"/>
                 <div align="center">
 
-                    <h:form id="formClientes">
-                        <p:panel style="width: 80%">
+                    <h:form id="formClientes" style="padding-top: 10px;">
+                        <p:panel style="width: 95%" >
                             <f:facet name="header">
                                 <p:column>
-                                    <p:outputLabel value="Clientes"/>
+                                    <p:outputLabel value="MANTENIMIENTO DE CLIENTES"/>
                                 </p:column>
                             </f:facet>
-                            <p:panelGrid style="width: 80%">
+                            <p:panelGrid style="width: 100%; margin-top: 10px;">
                                 <p:row>
                                     <p:column>
                                         <p:outputLabel value="ID"/>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{clientesBean.clientes.idCliente}" required="true" style="width: 90%"/>
+                                        <p:inputText value="#{clientesBean.clientes.idCliente}" required="true" style="width: 95%"/>
                                     </p:column>
-                                </p:row>
-                                <p:row>
                                     <p:column>
                                         <p:outputLabel value="Nombres"/>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{clientesBean.clientes.nombres}" required="true" style="width: 90%"/>
+                                        <p:inputText value="#{clientesBean.clientes.nombres}" required="true" style="width: 95%"/>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -42,15 +40,13 @@
                                         <p:outputLabel value="Apellidos"/>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{clientesBean.clientes.apellidos}" required="true" style="width: 90%"/>
+                                        <p:inputText value="#{clientesBean.clientes.apellidos}" required="true" style="width: 95%"/>
                                     </p:column>
-                                </p:row>
-                                <p:row>
                                     <p:column>
                                         <p:outputLabel value="Fecha de Nacimiento"/>
                                     </p:column>
-                                    <p:column>
-                                        <p:calendar id="button" value="#{clientesBean.clientes.fechaNaci}" showOn="button" style="width: 100%"/>
+                                    <p:column> 
+                                        <p:calendar id="button" value="#{clientesBean.clientes.fechaNaci}" showOn="button"/>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -58,15 +54,13 @@
                                         <p:outputLabel value="Dirección"/>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{clientesBean.clientes.direccion}" required="true" style="width: 90%"/>
+                                        <p:inputText value="#{clientesBean.clientes.direccion}" required="true" style="width: 95%"/>
                                     </p:column>
-                                </p:row>
-                                <p:row>
                                     <p:column>
                                         <p:outputLabel value="Telefono"/>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{clientesBean.clientes.telefono}" required="true" style="width: 90%"/>
+                                        <p:inputText value="#{clientesBean.clientes.telefono}" required="true" style="width: 95%"/>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -74,23 +68,23 @@
                                         <p:outputLabel value="Email"/>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{clientesBean.clientes.email}" required="true" style="width: 90%"/>
+                                        <p:inputText value="#{clientesBean.clientes.email}" required="true" style="width: 95%"/>
                                     </p:column>
                                 </p:row>
                             </p:panelGrid>
-                            <p:commandButton value="Guardar" action="#{clientesBean.insertClientes()}" update=":tableClientes:listClientes, :formClientes"/>
-                            <p:commandButton value="Nuevo" action="#{clientesBean.clean()}" update=":formClientes"/>
-                            <p:commandButton value="Actualizar" action="#{clientesBean.updateClientes()}" update=":tableClientes:listClientes"/>
+                            <p:commandButton value="Nuevo" action="#{clientesBean.clean()}" update=":formClientes"  style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                            <p:commandButton value="Guardar" action="#{clientesBean.insertClientes()}" update=":tableClientes:listClientes, :formClientes" rendered="#{!mascotaBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                            <p:commandButton value="Actualizar" action="#{clientesBean.updateClientes()}" update=":tableClientes:listClientes" rendered="#{mascotaBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
                         </p:panel>
                     </h:form>
-                    <h:form id="tableClientes" style="width: 80%">
+                    <h:form id="tableClientes" style="width: 96%; margin-top: 15px;">
                         <p:dataTable id="listClientes" var="clientes" value="#{clientesBean.listClientes()}" rowKey="#{clientes.idCliente}" selection="#{clientesBean.clientes}" selectionMode="single" >
-                            <p:ajax event="rowSelect" update=":formClientes"/>
+                            <p:ajax event="rowSelect" update=":formClientes" listener="#{mascotaBean.selectBandera()}"/>
                             <p:column headerText="Codigo">
                                 <p:outputLabel value="#{clientes.getIdCliente()}"/>
                             </p:column>
                             <p:column headerText="Nombres y Apellidos">
-                                <p:outputLabel value="#{clientes.getNombres()} #{mascota.getNombreCliente()}"/>
+                                <p:outputLabel value="#{clientes.getNombres()} #{clientes.getApellidos()}"/>
                             </p:column>
                             <p:column headerText="Fecha de Nacimiento">
                                 <p:outputLabel value="#{clientes.getFechaNaci()}"/>

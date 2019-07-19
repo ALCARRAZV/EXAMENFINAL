@@ -24,6 +24,7 @@ public class ClientesBean {
     private Cliente clientes;
     private ClientesDao clientesDao;
     private boolean respuesta;
+    private boolean banderaSelect = false;    
 
     public ClientesBean() {
         this.clientes = new Cliente();
@@ -87,6 +88,18 @@ public class ClientesBean {
         }
         return "/Clientes";
 
+    }
+    
+     public void selectBandera(){
+        banderaSelect = true;
+    }
+
+    public boolean isBanderaSelect() {
+        return banderaSelect;
+    }
+
+    public void setBanderaSelect(boolean banderaSelect) {
+        this.banderaSelect = banderaSelect;
     }
 
 }

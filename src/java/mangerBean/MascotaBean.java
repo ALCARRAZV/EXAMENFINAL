@@ -9,12 +9,10 @@ import dao.MascotaDao;
 import entidades.Mascota;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import service.IMascota;
 
 /**
  *
@@ -24,8 +22,6 @@ import service.IMascota;
 @ViewScoped
 public class MascotaBean {
 
-    /*Session session;
-    Transaction transaction;*/
     private Mascota mascota;
     public MascotaDao mascotadao;
     boolean respuesta;
@@ -33,14 +29,6 @@ public class MascotaBean {
 
     public MascotaBean() {
         this.mascota = new Mascota();
-    }
-
-    public Mascota getMascota() {
-        return mascota;
-    }
-
-    public void setMascota(Mascota mascota) {
-        this.mascota = mascota;
     }
 
     public ArrayList<Mascota> listMascota() {
@@ -94,6 +82,15 @@ public class MascotaBean {
         return "/Mascota";
         
     }
+    
+      public Mascota getMascota() {
+        return mascota;
+    }
+
+    public void setMascota(Mascota mascota) {
+        this.mascota = mascota;
+    }
+
     
     public void selectBandera(){
         banderaSelect = true;

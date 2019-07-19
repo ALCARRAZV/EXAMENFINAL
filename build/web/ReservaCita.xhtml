@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <ui:composition template="./TemplateVeterinaria.xhtml">
+            <ui:define name="content">
+                <p:growl id="msj" autoUpdate="true"/>
+                <div align="center">
+                    <h:form id="fromReservaCita" style="padding-top: 20px; padding-bottom: 20px;">
+                        <p:panel style="width: 95%">
+                            <f:facet name="header">
+                                <column>
+                                    <p:outputLabel value="MANTENIMIENTO RESERVAR CITA"/>  
+                                </column>
+                            </f:facet>
+                            <p:panelGrid style="width: 100%; padding-top: 20px;">
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="ID"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{reservaCitaBean.reservaCita.idReservaCita}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Fecha"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:calendar value="#{reservaCitaBean.reservaCita.fecha}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Tipo Reserva"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectOneMenu value="#{reservaCitaBean.idTipreserva}">
+                                            <f:selectItem itemLabel="-- Seleccione Tipo Reserva --"/>
+                                            <f:selectItems value="#{reservaCitaBean.listatiporeserva}" var="tiporeserva" itemLabel="#{tiporeserva.descripcion}" itemValue="#{tiporeserva.idTipoReserva}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Cliente"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectOneMenu value="#{reservaCitaBean.idCliente}">
+                                            <f:selectItem itemLabel="-- Seleccione Cliente --"/>
+                                            <f:selectItems value="#{reservaCitaBean.listcliente}" var="cliente" itemLabel="#{cliente.nombres} #{cliente.apellidos}" itemValue="#{cliente.idCliente}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Usuario"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectOneMenu value="#{reservaCitaBean.idUsuario}">
+                                            <f:selectItem itemLabel="-- Seleccione Usuario --"/>
+                                            <f:selectItems value="#{reservaCitaBean.listusuario}" var="usuario" itemLabel="#{usuario.nombreUsuario}" itemValue="#{usuario.idUsuario}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            <p:commandButton value="Nuevo" action="#{reservaCitaBean.clean()}" update=":dataResevaCita:listaReservaCita,:fromReservaCita"/>
+                            <p:commandButton rendered="#{!reservaCitaBean.banderaSelected}" value="Guardar" action="#{reservaCitaBean.guardarReservacita()}" update=":dataResevaCita:listaReservaCita,:fromReservaCita"/>
+                            <p:commandButton rendered="#{reservaCitaBean.banderaSelected}" value="Actualizar" action="#{reservaCitaBean.actualizarReservacita()}" update=":dataResevaCita:listaReservaCita,:fromReservaCita"/>
+                        </p:panel>
+                    </h:form>
+                    <h:form id="dataResevaCita">
+                        <p:dataTable rowKey="#{reserva.idReservaCita}" selection="#{reservaCitaBean.reservaCita}" selectionMode="single" id="listaReservaCita" var="reserva" value="#{reservaCitaBean.listarReservacita()}">
+                            <p:ajax update=":fromReservaCita" event="rowSelect" listener="#{reservaCitaBean.banderaSelected()}"/>
+                            <p:column headerText="Codigo">
+                                <h:outputText value="#{reserva.idReservaCita}"/>
+                            </p:column>
+                            <p:column headerText="Fecha">
+                                <h:outputText value="#{reserva.fecha}"/>
+                            </p:column>
+                            <p:column headerText="Accion">
+                                <p:commandButton value="Eliminar" oncomplete="PF('dgEliminar').show();">
+                                    <f:setPropertyActionListener target="#{reservaCitaBean.reservaCita}" value="#{reserva}" />
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </div>
+                <p:dialog id="dgEliminar" header="Eliminar registro" widgetVar="dgEliminar" showEffect="explode" hideEffect="explode" modal="true">
+                    <h:form id="fromEliminar" style="text-align:center;">
+                        <h:outputText value="Desea eliminar este registro"/>
+                        <p:commandButton value="Si" actionListener="#{reservaCitaBean.eliminar()}" update=":dataResevaCita:listaReservaCita" oncomplete="PF('dgEliminar').hide();"/>
+                        <p:commandButton value="No" oncomplete="PF('dgEliminar').hide();" />
+                    </h:form>
+                </p:dialog>
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
+

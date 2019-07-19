@@ -7,26 +7,23 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
         <ui:composition template="./TemplateVeterinaria.xhtml">
-
             <ui:define name="content">
-                
                 <p:growl id="msj" autoUpdate="true"/>
                 <div align="center">
-
-                    <h:form id="fromMascota">
-                        <p:panel style="width: 80%">
+                    <h:form id="fromMascota" style="padding-top: 20px; padding-bottom: 20px;">
+                        <p:panel style="width: 95%">
                             <f:facet name="header">
                                 <p:column>
-                                    <p:outputLabel value="Mascotas"/>
+                                    <p:outputLabel value="FORMULARIO DE REGISTRO DE MASCOTAS"/>
                                 </p:column>
                             </f:facet>
-                            <p:panelGrid style="width: 80%">
+                            <p:panelGrid style="width: 100%; padding-top: 20px;">
                                 <p:row>
                                     <p:column>
                                         <p:outputLabel value="ID"/>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{mascotaBean.mascota.idMascota}" required="true" style="width: 90%"/>
+                                        <p:inputText value="#{mascotaBean.mascota.idMascota}" required="true" style="width: 95%"/>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -34,7 +31,7 @@
                                         <p:outputLabel value="Nombre Mascota"/>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{mascotaBean.mascota.nombreMascota}" required="true" style="width: 90%"/>
+                                        <p:inputText value="#{mascotaBean.mascota.nombreMascota}" required="true" style="width: 95%"/>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -42,7 +39,7 @@
                                         <p:outputLabel value="Nombre Cliente"/>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{mascotaBean.mascota.nombreCliente}" required="true" style="width: 90%"/>
+                                        <p:inputText value="#{mascotaBean.mascota.nombreCliente}" required="true" style="width: 95%"/>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -50,16 +47,16 @@
                                         <p:outputLabel value="Raza"/>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{mascotaBean.mascota.raza}" required="true" style="width: 90%"/>
+                                        <p:inputText value="#{mascotaBean.mascota.raza}" required="true" style="width: 95%"/>
                                     </p:column>
                                 </p:row>
                             </p:panelGrid>
-                            <p:commandButton value="Nuevo" action="#{mascotaBean.clean()}" update=":fromMascota"/>
-                            <p:commandButton value="Guardar" action="#{mascotaBean.insertMascota()}" update=":tableMascotas:listMascotas" rendered="#{!mascotaBean.banderaSelect}"/>
-                            <p:commandButton value="Editar" action="#{mascotaBean.updateMascota()}" update=":tableMascotas:listMascotas" rendered="#{mascotaBean.banderaSelect}"/>
+                                <p:commandButton value="Nuevo" action="#{mascotaBean.clean()}" update=":fromMascota" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                                <p:commandButton value="Guardar" action="#{mascotaBean.insertMascota()}" update=":tableMascotas:listMascotas" rendered="#{!mascotaBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                                <p:commandButton value="Actualizar" action="#{mascotaBean.updateMascota()}" update=":tableMascotas:listMascotas" rendered="#{mascotaBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
                         </p:panel>
                     </h:form>
-                    <h:form id="tableMascotas" style="width: 80%">
+                    <h:form id="tableMascotas" style="width: 96%; margin-top: 15px;">
                         <p:dataTable id="listMascotas" var="mascota" value="#{mascotaBean.listMascota()}" rowKey="#{mascota.idMascota}" selection="#{mascotaBean.mascota}" selectionMode="single" >
                             <p:ajax event="rowSelect" update=":fromMascota" listener="#{mascotaBean.selectBandera()}"/>
                             <p:column headerText="Codigo">
@@ -83,17 +80,14 @@
                     </h:form>
                 </div>
                 <p:dialog id="dlgEliminar" header="Eliminar registro" widgetVar="dlgEliminar" showEffect="explode" hideEffect="explode">
-                    <h:form id="fromEliminar">
+                    <h:form id="fromEliminar" style="text-align:center;">
                         <h:outputText value="Desea eliminar este registro"/>
                         <p:commandButton value="Si" actionListener="#{mascotaBean.deleteMascota()}" update=":tableMascotas:listMascotas" oncomplete="PF('dlgEliminar').hide()"/>
                         <p:commandButton value="No" oncomplete="PF('dlgEliminar').hide()"/>
                     </h:form>
                 </p:dialog>
-                
             </ui:define>
-
         </ui:composition>
-
     </h:body>
 </html>
 

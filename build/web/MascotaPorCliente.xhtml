@@ -7,20 +7,17 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
         <ui:composition template="./TemplateVeterinaria.xhtml">
-
             <ui:define name="content">
-
                 <p:growl id="msj" autoUpdate="true"/>
                 <div align="center">
-
-                    <h:form id="fromMascota">
-                        <p:panel style="width: 80%">
+                    <h:form id="fromMascotaPorCliente" style="padding-top: 15px">
+                        <p:panel style="width: 95%">
                             <f:facet name="header">
                                 <p:column>
                                     <p:outputLabel value="Mascotas"/>
                                 </p:column>
                             </f:facet>
-                            <p:panelGrid style="width: 80%">
+                            <p:panelGrid style="width: 95%">
                                 <p:row>
                                     <p:column>
                                         <p:outputLabel value="Cliente"/>
@@ -55,9 +52,27 @@
                                     </p:column>
                                 </p:row>
                             </p:panelGrid>
-                            <p:commandButton value="Guardar" action="#{mascotaPorClienteBean.insertMascotaPorCliente()}" />
+                            <p:commandButton value="Guardar" action="#{mascotaPorClienteBean.insertMascotaPorCliente()}"  update=":fromMascotaPorCliente"/>
                         </p:panel>
                     </h:form>
+                    <!--h:form id="tableMascotas" style="width: 96%; margin-top: 15px;">
+                        <p:dataTable id="listMascotas" var="mascotaCliente" value="#{mascotaPorClienteBean.listMascotaporcliente()}">
+                            <p:column headerText="Cliente">
+                                <p:outputLabel value="#{mascotaCliente.getCliente()}"/>
+                            </p:column>
+                            <p:column headerText="Mascota">
+                                <p:outputLabel value="#{mascotaCliente.getMascota()}"/>
+                            </p:column>
+                            <p:column headerText="Estado">
+                                <p:outputLabel value="#{mascotaCliente.getEstado()}"/>
+                            </p:column>
+                            <p:column headerText="Acciones">
+                                <p:commandButton value="Eliminar" oncomplete="PF('dlgEliminar').show();">
+                                    <f:setPropertyActionListener target="#{mascotaBean.mascota}" value="#{mascota}"/>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form-->
                 </div>
             </ui:define>
 

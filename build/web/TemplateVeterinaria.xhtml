@@ -13,28 +13,42 @@
     </h:head>
 
     <h:body>
-
         <h:form>
-            <div id="top" class="top">
-                <ui:insert name="top">Veterinaria Mascota</ui:insert>
-                <p:megaMenu>
-                    <p:submenu label="Inicio"></p:submenu>
-                    <p:submenu label="Mantenimiento">
-                        <p:column>
-                            <p:submenu label="A">
-                                <p:menuitem value="Mascota" action="/Mascota"></p:menuitem>
-                                <p:menuitem value="Cliente" action="/Clientes"></p:menuitem>
-                                <p:menuitem value="Personal" action="/Personal"></p:menuitem>
-                                <p:menuitem value="Vacunas" action="/Vacuna"></p:menuitem>
+            <p:panelGrid class="header">
+                <p:row>
+                    <p:column style="border: none; width: 30%; font-size: 20px; color:#045491; padding-left: 100px; background: #D4E8FF;">
+                        <ui:insert name="top">VETERINARIA MASCOTA</ui:insert>
+                    </p:column>
+                    <p:column style="border: none; width: 70%; background:#D4E6FF;" >
+                        <p:menubar style="background: #D4E8FF;">
+                            <p:menuitem value="INICIO" action="TemplateVeterinaria" style="padding-left: 20px;"/>
+                            <p:submenu label="MASCOTAS / CLIENTE" style="padding-left: 20px;">
+                                <p:menuitem value="CLIENTES" action="Clientes"/>
+                                <p:menuitem value="MASCOTA" action="Mascota"/>
+                                <p:menuitem value="MASCOTA - CLIENTE" url="MascotaPorCliente.xhtml" />
                             </p:submenu>
-                        </p:column>
-                    </p:submenu>
-                </p:megaMenu>
-            </div>
+                            <p:submenu label="PROCESOS" style="padding-left: 20px;">
+                                <p:menuitem value="ATENCIONES" url="Atencion.xhtml"/>
+                                <p:menuitem value="RESERVAR CITA" url="ReservaCita.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="MANTENIMIENTO" style="padding-left: 20px;">
+                                <p:menuitem value="PERSONAL " action="Personal" icon="pi pi-angle-double-left" />
+                                <p:menuitem value="TIPO DE ATENCION" action="TipoAtencion" icon="pi pi-angle-double-right" />
+                                <p:menuitem value="TIPO DE RESERVA" action="TipoReserva" icon="pi pi-angle-double-right" />
+                            </p:submenu>
+                            <p:submenu label="SEGURIDAD" style="padding-left: 20px;">
+                                <p:menuitem value="USUARIOS " url="Usuario.xhtml" />
+                            </p:submenu>
+                        </p:menubar>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
         </h:form>
 
         <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
+            <ui:insert name="content">
+                <img src="resources/img/fondo3.jpg" alt="" width="100%"/>
+            </ui:insert>
         </div>
 
     </h:body>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="./TemplateVeterinaria.xhtml">
+            <ui:define name="content">
+                <p:growl id="msj" autoUpdate="true"/>
+                <div align="center">
+                    <h:form id="formTipoReserva" style="padding-top: 5px;">
+                        <p:panel style="width: 95%; padding-top: 10px; padding-bottom: 20px;" >
+                            <f:facet name="header">
+                                <p:column>
+                                    <p:outputLabel value="MANTENIENTO DE TIPO DE RESERVA"/>
+                                </p:column>
+                            </f:facet>
+                            <p:panelGrid style="width: 100%">
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="ID"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{tipoReservaBean.tiporeserva.idTipoReserva}" required="true" style="width: 90%"/>
+                                    </p:column><p:column>
+                                        <p:outputLabel value="Descripción"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{tipoReservaBean.tiporeserva.descripcion}" required="true" style="width: 90%"/>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            <p:commandButton value="Guardar" action="#{tipoReservaBean.insertTiporeserva()}" update=":tableTipoReserva:listaTipoReserva, :formTipoReserva" rendered="#{!tipoReservaBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                            <p:commandButton value="Nuevo" action="#{tipoReservaBean.clean()}" update=":formTipoReserva" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                            <p:commandButton value="Actualizar" action="#{tipoReservaBean.updateTiporeserva()}" update=":tableTipoReserva:listaTipoReserva" rendered="#{tipoReservaBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                        </p:panel>
+                    </h:form>
+                    <h:form id="tableTipoReserva" style="width: 96%">
+                        <p:dataTable id="listaTipoReserva" var="tipoReserva" value="#{tipoReservaBean.listTiporeserva()}" rowKey="#{tipoReserva.idTipoReserva}" selection="#{tipoReservaBean.tiporeserva}" selectionMode="single" >
+                            <p:ajax event="rowSelect" update=":formTipoReserva"  listener="#{tipoReservaBean.selectBandera()}"/>
+                            <p:column headerText="Codigo">
+                                <p:outputLabel value="#{tipoReserva.getIdTipoReserva()}"/>
+                            </p:column>
+                            <p:column headerText="Descripcion">
+                                <p:outputLabel value="#{tipoReserva.getDescripcion()}"/>
+                            </p:column>
+                            <p:column headerText="Acciones">
+                                <p:commandButton value="Eliminar" action="#{tipoReservaBean.deleteTiporeserva(tipoReserva)}" update=":tableTipoReserva:listaTipoReserva"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </div>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

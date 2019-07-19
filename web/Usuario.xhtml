@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="./TemplateVeterinaria.xhtml">
+            <ui:define name="content">
+                <p:growl id="msj" autoUpdate="true"/>
+                <div align="center">
+                    <h:form id="formUsuarios" style="padding-top: 20px; padding-bottom: 20px;">
+                        <p:panel style="width: 95%">
+                            <f:facet name="header">
+                                <p:column>
+                                    <p:outputLabel value="FORMULARIO DE MANTENIMIENTO DE USUARIOS"/>
+                                </p:column>
+                            </f:facet>
+                            <p:panelGrid style="width: 100%; padding-top: 20px;">
+                                <p:row >
+                                    <p:column >
+                                        <p:outputLabel value="ID"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{usuariosBean.usuario.idUsuario}" style="width: 95%"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Usuario"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{usuariosBean.usuario.nombreUsuario}" style="width: 95%"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Contraseña"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{usuariosBean.usuario.password}" style="width: 95%"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Seleccione tipo de usuario"/>
+                                        <p:commandButton value="Personal" action="#{usuariosBean.show()}" style="margin-left: 100px;">
+                                            <f:ajax execute="@form" render="@form"></f:ajax>
+                                        </p:commandButton>
+                                        <p:commandButton value="Clientes" action="#{usuariosBean.hide()}" style="margin-left: 50px;">
+                                            <f:ajax execute="@form" render="@form"></f:ajax>
+                                        </p:commandButton>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectOneMenu value="#{usuariosBean.idPersonal}" rendered="#{usuariosBean.visible}">
+                                            <f:selectItem itemLabel="Seleccione Item Personal..."/>
+                                            <f:selectItems value="#{usuariosBean.listaPersonal}" var="personal" itemValue="#{personal.idPersonal}" itemLabel="#{personal.nombres} #{personal.apellidos}"/>
+                                        </p:selectOneMenu>
+                                        <p:selectOneMenu value="#{usuariosBean.idCliente}" rendered="#{!usuariosBean.visible}">
+                                            <f:selectItem itemLabel="Seleccione Item Clientes..."/>
+                                            <f:selectItems value="#{usuariosBean.listaClientes}" var="cliente" itemValue="#{cliente.idCliente}" itemLabel="#{cliente.nombres} #{cliente.apellidos}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                                <p:commandButton value="Nuevo" action="#{usuariosBean.clean()}" update=":formUsuarios" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                                <p:commandButton value="Guardar" action="#{usuariosBean.insertUsuario()}" update=":tableusuarios:listUsuarios" rendered="#{!usuariosBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                                <p:commandButton value="Actualizar" action="#{usuariosBean.updateUsuario()}" update=":tableusuarios:listUsuarios, formUsuarios" rendered="#{usuariosBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                        </p:panel>
+                    </h:form>
+                    <h:form id="tableusuarios" style="width: 96%; margin-top: 15px;">
+                        <p:dataTable id="listUsuarios" var="usuarios" value="#{usuariosBean.listUsuario()}" rowKey="#{usuarios.idUsuario}" selection="#{usuariosBean.usuario}" selectionMode="single" >
+                            <p:ajax event="rowSelect" update=":formUsuarios" listener="#{usuariosBean.selectBandera()}"/>
+                            <p:column headerText="Codigo">
+                                <p:outputLabel value="#{usuarios.getIdUsuario()}"/>
+                            </p:column>
+                            <p:column headerText="Nombre y Apellidos">
+                                <p:outputLabel value="#{usuarios.getIdUsuario()}"/>
+                            </p:column>
+                            <p:column headerText="Usuario">
+                                <p:outputLabel value="#{usuarios.getNombreUsuario()}"/>
+                            </p:column>
+                            <p:column headerText="Contraseña">
+                                <p:outputLabel value="#{usuarios.getPassword()}"/>
+                            </p:column>
+                            <p:column headerText="Acciones">
+                                <p:commandButton value="Eliminar" oncomplete="PF('dlgEliminar').show();">
+                                    <f:setPropertyActionListener target="#{usuariosBean.usuario}" value="#{usuarios}"/>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </div>
+                <p:dialog id="dlgEliminar" header="Eliminar registro" widgetVar="dlgEliminar" showEffect="explode" hideEffect="explode">
+                    <h:form id="fromEliminar">
+                        <h:outputText value="Desea eliminar este registro"/>
+                        <p:commandButton value="Si" actionListener="#{usuariosBean.deleteUsuario()}" update=":tableusuarios:listUsuarios" oncomplete="PF('dlgEliminar').hide()"/>
+                        <p:commandButton value="No" oncomplete="PF('dlgEliminar').hide()"/>
+                    </h:form>
+                </p:dialog>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

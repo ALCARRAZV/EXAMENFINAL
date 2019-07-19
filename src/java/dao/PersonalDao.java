@@ -38,6 +38,7 @@ public class PersonalDao implements IPersonal{
             System.out.println("Error en PersonalDao.listPersonal...!");
         }
 
+        session.close();
         return list;
 
     }

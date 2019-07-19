@@ -26,10 +26,10 @@ public class MascotaPorClienteDao implements IMascotaPorCliente {
 
     @Override
     public ArrayList<Mascotaporcliente> listMascotaporcliente() {
-
+        //from Mascotaporcliente  as mpc inner join  mpc.mascota inner join mpc.cliente
         session = HibernateUtil.getSessionFactory().openSession();
         ArrayList<Mascotaporcliente> list;
-        hql = " from Cliente";
+        hql = "from Mascotaporcliente";
 
         query = session.createQuery(hql);
         list = (ArrayList<Mascotaporcliente>) query.list();

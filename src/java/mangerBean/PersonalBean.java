@@ -2,6 +2,7 @@ package mangerBean;
 
 import dao.PersonalDao;
 import entidades.Personal;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -19,17 +20,10 @@ public class PersonalBean {
     private Personal personal;
     private PersonalDao personalDao;
     private boolean respuesta;
+    private boolean banderaSelect = false;
 
     public PersonalBean() {
         this.personal = new Personal();
-    }
-
-    public Personal getPersonal() {
-        return personal;
-    }
-
-    public void setPersonal(Personal personal) {
-        this.personal = personal;
     }
 
     public ArrayList<Personal> listPersonal() {
@@ -71,7 +65,7 @@ public class PersonalBean {
 
     }
 
-    public String deletePersonal(Personal personal) {
+    public String deletePersonal() {
 
         personalDao = new PersonalDao();
         respuesta = personalDao.deletePersonal(personal);
@@ -82,6 +76,26 @@ public class PersonalBean {
         }
         return "/Personal";
 
+    }
+    
+      public Personal getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(Personal personal) {
+        this.personal = personal;
+    }
+
+    public void selectBandera() {
+        banderaSelect = true;
+    }
+
+    public boolean isBanderaSelect() {
+        return banderaSelect;
+    }
+
+    public void setBanderaSelect(boolean banderaSelect) {
+        this.banderaSelect = banderaSelect;
     }
 
 }
