@@ -15,7 +15,7 @@ import utilitarios.HibernateUtil;
 
 /**
  *
- * @author IVAN
+ * @author GEDEON
  */
 public class MascotaDao implements IMascota {
 

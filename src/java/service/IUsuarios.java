@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author IVAN
+ * @author GEDEON
  */
 public interface IUsuarios {
 

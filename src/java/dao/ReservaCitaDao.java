@@ -16,7 +16,7 @@ import utilitarios.HibernateUtil;
 
 /**
  *
- * @author IVAN
+ * @author GEDEON
  */
 public class ReservaCitaDao implements IReservaCita{
     

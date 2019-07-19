@@ -18,6 +18,27 @@
                                 </p:column>
                             </f:facet>
                             <p:panelGrid style="width: 100%; padding-top: 20px;">
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Seleccione tipo de usuario"/>
+                                        <p:commandButton value="Personal" action="#{usuariosBean.show()}" style="margin-left: 100px;">
+                                            <f:ajax execute="@form" render="@form"></f:ajax>
+                                        </p:commandButton>
+                                        <p:commandButton value="Clientes" action="#{usuariosBean.hide()}" style="margin-left: 50px;">
+                                            <f:ajax execute="@form" render="@form"></f:ajax>
+                                        </p:commandButton>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectOneMenu value="#{usuariosBean.idPersonal}" rendered="#{usuariosBean.visible}">
+                                            <f:selectItem itemLabel="Seleccione Item Personal..."/>
+                                            <f:selectItems value="#{usuariosBean.listaPersonal}" var="personal" itemValue="#{personal.idPersonal}" itemLabel="#{personal.nombres} #{personal.apellidos}"/>
+                                        </p:selectOneMenu>
+                                        <p:selectOneMenu value="#{usuariosBean.idCliente}" rendered="#{!usuariosBean.visible}">
+                                            <f:selectItem itemLabel="Seleccione Item Clientes..."/>
+                                            <f:selectItems value="#{usuariosBean.listaClientes}" var="cliente" itemValue="#{cliente.idCliente}" itemLabel="#{cliente.nombres} #{cliente.apellidos}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                </p:row>
                                 <p:row >
                                     <p:column >
                                         <p:outputLabel value="ID"/>
@@ -42,31 +63,11 @@
                                         <p:inputText value="#{usuariosBean.usuario.password}" style="width: 95%"/>
                                     </p:column>
                                 </p:row>
-                                <p:row>
-                                    <p:column>
-                                        <p:outputLabel value="Seleccione tipo de usuario"/>
-                                        <p:commandButton value="Personal" action="#{usuariosBean.show()}" style="margin-left: 100px;">
-                                            <f:ajax execute="@form" render="@form"></f:ajax>
-                                        </p:commandButton>
-                                        <p:commandButton value="Clientes" action="#{usuariosBean.hide()}" style="margin-left: 50px;">
-                                            <f:ajax execute="@form" render="@form"></f:ajax>
-                                        </p:commandButton>
-                                    </p:column>
-                                    <p:column>
-                                        <p:selectOneMenu value="#{usuariosBean.idPersonal}" rendered="#{usuariosBean.visible}">
-                                            <f:selectItem itemLabel="Seleccione Item Personal..."/>
-                                            <f:selectItems value="#{usuariosBean.listaPersonal}" var="personal" itemValue="#{personal.idPersonal}" itemLabel="#{personal.nombres} #{personal.apellidos}"/>
-                                        </p:selectOneMenu>
-                                        <p:selectOneMenu value="#{usuariosBean.idCliente}" rendered="#{!usuariosBean.visible}">
-                                            <f:selectItem itemLabel="Seleccione Item Clientes..."/>
-                                            <f:selectItems value="#{usuariosBean.listaClientes}" var="cliente" itemValue="#{cliente.idCliente}" itemLabel="#{cliente.nombres} #{cliente.apellidos}"/>
-                                        </p:selectOneMenu>
-                                    </p:column>
-                                </p:row>
+
                             </p:panelGrid>
-                                <p:commandButton value="Nuevo" action="#{usuariosBean.clean()}" update=":formUsuarios" style=" width: 150px; height: 30px; margin-top: 10px;"/>
-                                <p:commandButton value="Guardar" action="#{usuariosBean.insertUsuario()}" update=":tableusuarios:listUsuarios" rendered="#{!usuariosBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
-                                <p:commandButton value="Actualizar" action="#{usuariosBean.updateUsuario()}" update=":tableusuarios:listUsuarios, formUsuarios" rendered="#{usuariosBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                            <p:commandButton value="Nuevo" action="#{usuariosBean.clean()}" update=":formUsuarios" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                            <p:commandButton value="Guardar" action="#{usuariosBean.insertUsuario()}" update=":tableusuarios:listUsuarios" rendered="#{!usuariosBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
+                            <p:commandButton value="Actualizar" action="#{usuariosBean.updateUsuario()}" update=":tableusuarios:listUsuarios, formUsuarios" rendered="#{usuariosBean.banderaSelect}" style=" width: 150px; height: 30px; margin-top: 10px;"/>
                         </p:panel>
                     </h:form>
                     <h:form id="tableusuarios" style="width: 96%; margin-top: 15px;">
@@ -76,7 +77,7 @@
                                 <p:outputLabel value="#{usuarios.getIdUsuario()}"/>
                             </p:column>
                             <p:column headerText="Nombre y Apellidos">
-                                <p:outputLabel value="#{usuarios.getIdUsuario()}"/>
+                                <p:outputLabel value="#{usuarios.cliente.nombres} #{usuarios.cliente.apellidos}  #{usuarios.personal.nombres} #{usuarios.personal.apellidos} "/>
                             </p:column>
                             <p:column headerText="Usuario">
                                 <p:outputLabel value="#{usuarios.getNombreUsuario()}"/>

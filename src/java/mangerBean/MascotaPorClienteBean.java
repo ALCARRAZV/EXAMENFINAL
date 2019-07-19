@@ -8,7 +8,7 @@ package mangerBean;
 import dao.ClientesDao;
 import dao.MascotaDao;
 import dao.MascotaPorClienteDao;
-import entidades.Cliente;
+import dao.PersonalDao;
 import entidades.Mascota;
 import entidades.Mascotaporcliente;
 import entidades.MascotaporclienteId;
@@ -20,7 +20,7 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author IVAN
+ * @author GEDEON
  */
 @ManagedBean
 @ViewScoped
@@ -35,6 +35,7 @@ public class MascotaPorClienteBean {
 
     private Mascotaporcliente mascotaPorCliente;
     MascotaporclienteId mascotaporclienteId;
+    private Mascota mascota;
 
     private int idCliente;
     private int idMascota;
@@ -42,6 +43,7 @@ public class MascotaPorClienteBean {
     boolean respuesta;
 
     public MascotaPorClienteBean() {
+        mascota = new Mascota();
         mascotaPorCliente = new Mascotaporcliente();
         mascotaporclienteId = new MascotaporclienteId();
         listarCombos();
@@ -77,6 +79,19 @@ public class MascotaPorClienteBean {
 
     }
     
+       public String deleteMascotaCliente(Mascotaporcliente mascotaporcliente) {
+
+        mascotaPorClienteDao = new MascotaPorClienteDao();
+        respuesta = mascotaPorClienteDao.deleteMascotaporcliente(mascotaporcliente);
+        if (respuesta) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro eliminado con exito", "exito"));
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error...No se pudo eliminar"));
+        }
+        return "/MascotaPorCliente";
+
+    }
+       
     public Mascotaporcliente getMascotaPorCliente() {
         return mascotaPorCliente;
     }
@@ -110,6 +125,14 @@ public class MascotaPorClienteBean {
     }
     public void setIdMascota(int idMascota) {
         this.idMascota = idMascota;
+    }
+
+    public Mascota getMascota() {
+        return mascota;
+    }
+
+    public void setMascota(Mascota mascota) {
+        this.mascota = mascota;
     }
     
 }

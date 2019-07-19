@@ -10,7 +10,7 @@ import entidades.Mascotaporcliente;
 
 /**
  *
- * @author IVAN
+ * @author GEDEON
  */
 public class probar {
     

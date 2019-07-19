@@ -96,20 +96,32 @@
                         <p:dataTable id="listTipoAtencion" var="atencion" value="#{atencionBean.listTipoAtencion()}" rowKey="#{atencion.idAtencion}" selection="#{atencionBean.atencion}" selectionMode="single" >
                             <p:ajax event="rowSelect" update=":formATencion" listener="#{atencionBean.selectBandera()}"/>
                             <p:column headerText="Codigo">
-                                <p:outputLabel value="#{atencion.getIdAtencion()}"/>
+                                <p:outputLabel value="#{atencion.idAtencion}"/>
+                            </p:column>
+                            <p:column headerText="Mascota">
+                                <p:outputLabel value="#{atencion.mascotaporcliente.id.idMascota}"/>
                             </p:column>
                             <p:column headerText="Diagnostico">
-                                <p:outputLabel value="#{atencion.getDiagnostico()}"/>
+                                <p:outputLabel value="#{atencion.diagnostico}"/>
                             </p:column>
                             <p:column headerText="Fecha">
-                                <p:outputLabel value="#{atencion.getFechaAtencion()}"/>
+                                <p:outputLabel value="#{atencion.fechaAtencion}"/>
                             </p:column>
                             <p:column headerText="Hora">
-                                <p:outputLabel value="#{atencion.getHoraAtencion()}"/>
+                                <p:outputLabel value="#{atencion.horaAtencion}"/>
+                            </p:column>
+                            <p:column headerText="Cliente">
+                                <p:outputLabel value="#{atencion.mascotaporcliente.id.idCliente}"/>
+                            </p:column>
+                            <p:column headerText="Personal">
+                                <p:outputLabel value="#{atencion.personal.nombres} #{atencion.personal.apellidos}"/>
+                            </p:column>}
+                            <p:column headerText="Tipo Atencion">
+                                <p:outputLabel value="#{atencion.tipoatencion.descrpcion}"/>
                             </p:column>
                             <p:column headerText="Acciones">
                                 <p:commandButton value="Eliminar" oncomplete="PF('dlgEliminar').show();">
-                                    <f:setPropertyActionListener target="#{atencionBean.atencion}" value="#{atencion}"/>
+                                    <f:setPropertyActionListener target="" value=""/>
                                 </p:commandButton>
                             </p:column>
                         </p:dataTable>

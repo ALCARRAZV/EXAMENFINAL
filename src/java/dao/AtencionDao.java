@@ -15,7 +15,7 @@ import utilitarios.HibernateUtil;
 
 /**
  *
- * @author IVAN
+ * @author GEDEON
  */
 public class AtencionDao  implements IAtencion{
 
@@ -28,7 +28,7 @@ public class AtencionDao  implements IAtencion{
     public ArrayList<Atencion> listAtencion() {
         session = HibernateUtil.getSessionFactory().openSession();
         ArrayList<Atencion> list = new ArrayList<>();
-        hql = " from Atencion";
+        hql = " from Atencion as aten inner join fetch aten.personal left join fetch aten.tipoatencion left join fetch aten.mascotaporcliente ";
 
         query = session.createQuery(hql);
         list = (ArrayList<Atencion>) query.list();

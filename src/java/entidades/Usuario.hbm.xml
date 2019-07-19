@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 19/07/2019 02:10:46 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 19/07/2019 10:38:37 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="entidades.Usuario" table="usuario" catalog="mascota" optimistic-lock="version">
         <id name="idUsuario" type="int">
@@ -9,10 +9,10 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="cliente" class="entidades.Cliente" fetch="select">
-            <column name="idCliente" />
+            <column name="idCliente" not-null="true" />
         </many-to-one>
         <many-to-one name="personal" class="entidades.Personal" fetch="select">
-            <column name="idPersonal" />
+            <column name="idPersonal" not-null="true" />
         </many-to-one>
         <property name="nombreUsuario" type="string">
             <column name="nombreUsuario" length="45" not-null="true" />

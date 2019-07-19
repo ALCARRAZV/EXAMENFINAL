@@ -15,7 +15,7 @@ import utilitarios.HibernateUtil;
 
 /**
  *
- * @author IVAN
+ * @author GEDEON
  */
 public class UsuariosDao implements IUsuarios{
     
@@ -29,7 +29,7 @@ public class UsuariosDao implements IUsuarios{
         //from Usuario as usu left join usu.personal left join usu.cliente
         session = HibernateUtil.getSessionFactory().openSession();
         ArrayList<Usuario> list = new ArrayList<>();
-        hql = " from Usuario";
+        hql = "from Usuario as usu left join fetch usu.personal left join fetch usu.cliente";
 
         try {
             query = session.createQuery(hql);

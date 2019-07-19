@@ -2,6 +2,46 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/service/IUsuarios.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/web/resources/css/default.css</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/mangerBean/MascotaBean.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/web/resources/img/IMG-20180315-WA0021.jpg</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/mangerBean/MascotaPorClienteBean.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/mangerBean/PersonalBean.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/dao/AtencionDao.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/mangerBean/ReservaCitaBean.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/web/resources/img/IMG-20180430-WA0001.jpg</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/dao/MascotaPorClienteDao.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/service/IPersonal.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/hibernate.reveng.xml</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/mangerBean/TipoAtencionBean.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/service/ITipoReserva.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/mangerBean/TipoReservaBean.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/service/IReservaCita.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/dao/MascotaDao.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/web/Usuario.xhtml</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/service/IClientes.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/web/resources/img/IMG-20180503-WA0000.jpg</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/mangerBean/AtencionBean.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/mangerBean/UsuariosBean.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/dao/ClientesDao.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/dao/TipoReservaDao.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/dao/UsuariosDao.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/utilitarios/HibernateUtil.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/dao/TipoAtencionDao.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/service/IMascota.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/web/resources/css/cssLayout.css</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/service/IAtencion.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/utilitarios/probar.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/service/ITipoAtencion.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/entidades/Atencion.hbm.xml</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/mangerBean/ClientesBean.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/dao/PersonalDao.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/dao/ReservaCitaDao.java</file>
+            <file>file:/C:/Users/GEDEON/Desktop/ALTAMIRANO%20HOYOS%20KEVIN%20IVAN/VeterinariaMascota/src/java/service/IMascotaPorCliente.java</file>
+        </group>
     </open-files>
 </project-private>

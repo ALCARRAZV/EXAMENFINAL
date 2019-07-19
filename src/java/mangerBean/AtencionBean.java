@@ -25,7 +25,7 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author IVAN
+ * @author GEDEON
  */
 @ManagedBean
 @ViewScoped
@@ -45,12 +45,12 @@ public class AtencionBean {
     private int idCliente;
     private int idTipoAtencion;
 
-    private final Personal personal;
-    private final Cliente clientes;
-    private final Mascota mascota;
-    private final Tipoatencion tipoAtencion;
-    private final Mascotaporcliente mascotaPorCliente;
-    private final MascotaporclienteId mascotaporclienteId;
+    private  Personal personal;
+    private  Cliente clientes;
+    private  Mascota mascota;
+    private  Tipoatencion tipoAtencion;
+    private  Mascotaporcliente mascotaPorCliente;
+    private  MascotaporclienteId mascotaporclienteId;
 
     private boolean respuesta;
     private boolean banderaSelect = false;
@@ -220,6 +220,54 @@ public class AtencionBean {
 
     public void setIdTipoAtencion(int idTipoAtencion) {
         this.idTipoAtencion = idTipoAtencion;
+    }
+
+    public Personal getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(Personal personal) {
+        this.personal = personal;
+    }
+
+    public Cliente getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(Cliente clientes) {
+        this.clientes = clientes;
+    }
+
+    public Mascota getMascota() {
+        return mascota;
+    }
+
+    public void setMascota(Mascota mascota) {
+        this.mascota = mascota;
+    }
+
+    public Tipoatencion getTipoAtencion() {
+        return tipoAtencion;
+    }
+
+    public void setTipoAtencion(Tipoatencion tipoAtencion) {
+        this.tipoAtencion = tipoAtencion;
+    }
+
+    public Mascotaporcliente getMascotaPorCliente() {
+        return mascotaPorCliente;
+    }
+
+    public void setMascotaPorCliente(Mascotaporcliente mascotaPorCliente) {
+        this.mascotaPorCliente = mascotaPorCliente;
+    }
+
+    public MascotaporclienteId getMascotaporclienteId() {
+        return mascotaporclienteId;
+    }
+
+    public void setMascotaporclienteId(MascotaporclienteId mascotaporclienteId) {
+        this.mascotaporclienteId = mascotaporclienteId;
     }
 
 }

@@ -11,7 +11,7 @@ import org.hibernate.Session;
 
 /**
  *
- * @author IVAN
+ * @author GEDEON
  */
 public interface IMascota {
     

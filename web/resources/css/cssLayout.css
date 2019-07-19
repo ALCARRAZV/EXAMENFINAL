@@ -3,19 +3,19 @@
     font-weight: bold;
     height: 90px;
     width: 100%;
-    color: #045491;
+    color: #D20005;
 }
 
 #bottom {
     position: relative;
-    background-color: #c2dfef;
+    background-color: aquamarine;
     padding: 5px;
     margin: 10px 0px 0px 0px;
 }
 
 #left {
     float: left;
-    background-color: #ece3a5;
+    background-color: royalblue;
     padding: 5px;
     width: 150px;
 }
@@ -29,30 +29,30 @@
 
 .center_content {
     position: relative;
-    background-color: #dddddd;
+    background-color: chartreuse;
     padding: 0px;
 }
 
 .left_content {
-    background-color: #dddddd;
+    background-color: #D20005;
     padding: 5px;
     margin-left: 170px;
 }
 
 .right_content {
-    background-color: #dddddd;
+    background-color: #fffff;
     padding: 5px;
     margin: 0px 170px 0px 170px;
 }
 
 #top a:link, #top a:visited {
-  color: black;
+  color: blue;
   font-weight : bold;
   text-decoration: none;
 }
 
 #top a:link:hover, #top a:visited:hover  {
-  color: black;
+  color: yellowgreen;
   font-weight : bold;
   text-decoration : underline;
 }

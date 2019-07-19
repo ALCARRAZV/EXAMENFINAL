@@ -1,5 +1,5 @@
 package entidades;
-// Generated 19/07/2019 02:10:45 AM by Hibernate Tools 4.3.1
+// Generated 19/07/2019 10:38:37 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -22,8 +22,10 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(int idUsuario, String nombreUsuario, String password) {
+    public Usuario(int idUsuario, Cliente cliente, Personal personal, String nombreUsuario, String password) {
         this.idUsuario = idUsuario;
+        this.cliente = cliente;
+        this.personal = personal;
         this.nombreUsuario = nombreUsuario;
         this.password = password;
     }

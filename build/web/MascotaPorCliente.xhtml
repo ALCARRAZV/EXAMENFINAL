@@ -52,27 +52,25 @@
                                     </p:column>
                                 </p:row>
                             </p:panelGrid>
-                            <p:commandButton value="Guardar" action="#{mascotaPorClienteBean.insertMascotaPorCliente()}"  update=":fromMascotaPorCliente"/>
+                            <p:commandButton value="Guardar" action="#{mascotaPorClienteBean.insertMascotaPorCliente()}"  update=":fromMascotaPorCliente, :tableMascotas:listMascotas"/>
                         </p:panel>
                     </h:form>
-                    <!--h:form id="tableMascotas" style="width: 96%; margin-top: 15px;">
+                    <h:form id="tableMascotas" style="width: 96%; margin-top: 15px;">
                         <p:dataTable id="listMascotas" var="mascotaCliente" value="#{mascotaPorClienteBean.listMascotaporcliente()}">
                             <p:column headerText="Cliente">
-                                <p:outputLabel value="#{mascotaCliente.getCliente()}"/>
+                                <p:outputLabel value="#{mascotaCliente.cliente.nombres} #{mascotaCliente.cliente.apellidos}"/>
                             </p:column>
                             <p:column headerText="Mascota">
-                                <p:outputLabel value="#{mascotaCliente.getMascota()}"/>
+                                <p:outputLabel value="#{mascotaCliente.mascota.nombreMascota}"/>
                             </p:column>
                             <p:column headerText="Estado">
-                                <p:outputLabel value="#{mascotaCliente.getEstado()}"/>
+                                <p:outputLabel value="#{mascotaCliente.estado}"/>
                             </p:column>
                             <p:column headerText="Acciones">
-                                <p:commandButton value="Eliminar" oncomplete="PF('dlgEliminar').show();">
-                                    <f:setPropertyActionListener target="#{mascotaBean.mascota}" value="#{mascota}"/>
-                                </p:commandButton>
+                                <p:commandButton value="Eliminar" action="#{mascotaPorClienteBean.deleteMascotaCliente(mascotaCliente)}" update=":tableMascotas:listMascotas"/>
                             </p:column>
                         </p:dataTable>
-                    </h:form-->
+                    </h:form>
                 </div>
             </ui:define>
 

@@ -22,7 +22,7 @@ import org.hibernate.HibernateException;
 
 /**
  *
- * @author IVAN
+ * @author GEDEON
  */
 @ManagedBean
 @ViewScoped

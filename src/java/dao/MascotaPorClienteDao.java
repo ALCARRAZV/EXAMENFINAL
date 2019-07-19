@@ -15,7 +15,7 @@ import utilitarios.HibernateUtil;
 
 /**
  *
- * @author IVAN
+ * @author GEDEON
  */
 public class MascotaPorClienteDao implements IMascotaPorCliente {
 
@@ -29,7 +29,7 @@ public class MascotaPorClienteDao implements IMascotaPorCliente {
         //from Mascotaporcliente  as mpc inner join  mpc.mascota inner join mpc.cliente
         session = HibernateUtil.getSessionFactory().openSession();
         ArrayList<Mascotaporcliente> list;
-        hql = "from Mascotaporcliente";
+        hql = "from Mascotaporcliente  as mpc inner join fetch mpc.mascota left join fetch mpc.cliente";
 
         query = session.createQuery(hql);
         list = (ArrayList<Mascotaporcliente>) query.list();
@@ -65,7 +65,19 @@ public class MascotaPorClienteDao implements IMascotaPorCliente {
 
     @Override
     public boolean deleteMascotaporcliente(Mascotaporcliente objMascotaporcliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         boolean respuesta = true;
+        session = HibernateUtil.getSessionFactory().openSession();
+        transaccion = session.beginTransaction();
+        try {
+            session.delete(objMascotaporcliente);
+            transaccion.commit();
+        } catch (Exception e) {
+            respuesta = false;
+            System.out.println("Error en MascotaPorClienteDao.deleteMascotaporcliente...!");
+        }
+
+        session.close();
+        return respuesta;
     }
 
 }
